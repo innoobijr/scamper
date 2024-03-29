@@ -1,0 +1,50 @@
+$Id: TODO,v 1.33 2024/01/03 04:40:56 mjl Exp $
+
+* compile without warnings when the following is passed in CFLAGS
+  -Wall -Wno-unneeded-internal-declaration -Wno-unused-const-variable
+  -Wno-deprecated-declarations -Wno-unused-parameter -Wshadow -Wextra
+
+* investigate if anyone uses the "source add" functionality and deorbit
+  if nobody does
+
+* the warts code sets flags/params_len to zero in a bunch of places, but
+  they may have been malloc_zero'd.  go through and figure out.
+
+* document JSON format for all measurements in sc_warts2json
+
+* monitor /etc/resolv.conf for changes.
+
+* try alternate nameserver entries if the first is unresponsive.
+
+* convert sc_bdrmap, sc_erosprober, sc_radargun, sc_tbitblind,
+  sc_tbitpmtud, and sc_uptime to libscamperctrl
+
+* in data collection drivers, ask for cycle start and stop records,
+  write them out.  done: sc_ally, sc_filterpolicy, sc_pinger,
+  sc_prefixprober, sc_prefixscan, sc_speedtrap
+
+* libscamperctrl:
+   scamper_task_use should return a pointer to a scamper_task_t *
+   scamper_inst_halt -> scamper_task_halt
+   unit tests
+
+* libscamperfile:
+   scamper_ping_reply_t: addr -> src
+
+* investigate if gettimeofday has to be called so much.
+
+* check that the TOS bits are being set properly on tx.
+
+* ensure that all clients that have observed sources unobserves.
+
+* ensure that all outfiles are closed when scamper shuts down.
+
+* in the scamper.1 man page:
+   document control socket quoting rules.
+   how to feed adhoc sources
+   how to set socket as output for traces
+   how does priority value translate into the way lists are mixed
+   what is the syntax of responses on control socket
+   what is the maximum supported length of source and outfile names and aliases
+   how does the cycles value of a source change as cycles are finished
+   when does source update take effect
